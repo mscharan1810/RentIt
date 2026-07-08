@@ -19,6 +19,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/items', itemRoutes);
 app.use('/api/bookings', bookingRoutes);
 
+app.get('/', (req, res) => {
+  res.send('RentIt API is running and connected to MongoDB Atlas!');
+});
+
 // Global Error Handler
 app.use((err, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
