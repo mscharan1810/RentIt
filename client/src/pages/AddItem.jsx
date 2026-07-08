@@ -143,15 +143,15 @@ const AddItem = () => {
       }
 
       let imageArray = [];
-      if (formData.imageUrls) {
-        imageArray = formData.imageUrls.split(',').map(url => url.trim());
+      if (formData.imageUrls && formData.imageUrls.trim() !== '') {
+        imageArray = formData.imageUrls.split(',').map(url => url.trim()).filter(url => url !== '');
       }
       
       if (localImages.length > 0) {
+        // If they upload a new local image, it REPLACES the old base64 images
         imageArray = [...imageArray, ...localImages];
-      }
-      
-      if (existingBase64Images.length > 0) {
+      } else if (existingBase64Images.length > 0) {
+        // If no new local images, keep the old base64 images
         imageArray = [...imageArray, ...existingBase64Images];
       }
       
@@ -180,7 +180,8 @@ const AddItem = () => {
       }
       navigate('/dashboard');
     } catch (error) {
-      alert(error.response?.data?.message || 'Failed to save item');
+      console.error('Error saving item:', error);
+      alert(error.response?.data?.message || `Failed to save item. Error: ${error.message}`);
     }
   };
 
