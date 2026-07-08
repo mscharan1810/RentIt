@@ -45,20 +45,36 @@ RentIt/
 
 ## Running the Application Locally
 
-Both the backend and frontend are currently running in the background.
+Follow these steps to set up the project on your local machine:
 
-**If you need to restart the servers:**
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/mscharan1810/RentIt.git
+   cd RentIt
+   ```
 
-1. **Backend:**
-   Open a new terminal, navigate to `RentIt/server` and run:
+2. **Install dependencies and setup Backend:**
+   Open a terminal, navigate to `RentIt/server` and run:
+   ```bash
+   cd server
+   npm install
+   ```
+   Create a `.env` file in the `server` directory by copying `.env.example`:
+   ```bash
+   cp .env.example .env
+   ```
+   *(Update the `MONGO_URI` and `JWT_SECRET` in `server/.env` with your actual values)*
+   
+   Start the backend server:
    ```bash
    npm start
    ```
-   *(Ensure you have MongoDB running locally on `mongodb://127.0.0.1:27017` or update the `MONGO_URI` in `server/.env` to point to a MongoDB Atlas cluster)*
 
-2. **Frontend:**
+3. **Install dependencies and setup Frontend:**
    Open a new terminal, navigate to `RentIt/client` and run:
    ```bash
+   cd client
+   npm install
    npm run dev
    ```
    *The React application will be available at `http://localhost:5173/`.*
