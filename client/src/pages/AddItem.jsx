@@ -143,16 +143,18 @@ const AddItem = () => {
       }
 
       let imageArray = [];
-      if (formData.imageUrls && formData.imageUrls.trim() !== '') {
-        imageArray = formData.imageUrls.split(',').map(url => url.trim()).filter(url => url !== '');
-      }
       
       if (localImages.length > 0) {
-        // If they upload a new local image, it REPLACES the old base64 images
-        imageArray = [...imageArray, ...localImages];
-      } else if (existingBase64Images.length > 0) {
-        // If no new local images, keep the old base64 images
-        imageArray = [...imageArray, ...existingBase64Images];
+        // If a new local image is uploaded, it completely REPLACES all previous URLs and base64 images
+        imageArray = [...localImages];
+      } else {
+        // Otherwise use the text input URLs and existing base64 images
+        if (formData.imageUrls && formData.imageUrls.trim() !== '') {
+          imageArray = formData.imageUrls.split(',').map(url => url.trim()).filter(url => url !== '');
+        }
+        if (existingBase64Images.length > 0) {
+          imageArray = [...imageArray, ...existingBase64Images];
+        }
       }
       
       if (imageArray.length === 0) {
