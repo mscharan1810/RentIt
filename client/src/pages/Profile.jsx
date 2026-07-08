@@ -48,7 +48,7 @@ const Profile = () => {
         payload.password = formData.password;
       }
 
-      const { data } = await axios.put('http://localhost:5000/api/auth/profile', payload, config);
+      const { data } = await axios.put('https://server-ten-pi-36.vercel.app/api/auth/profile', payload, config);
       
       localStorage.setItem('userInfo', JSON.stringify(data));
       setUserInfo(data);

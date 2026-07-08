@@ -21,7 +21,7 @@ const Search = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/items');
+        const { data } = await axios.get('https://server-ten-pi-36.vercel.app/api/items');
         setItems(data);
         setLoading(false);
       } catch (error) {

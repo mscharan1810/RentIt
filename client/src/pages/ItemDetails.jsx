@@ -14,7 +14,7 @@ const ItemDetails = () => {
   useEffect(() => {
     const fetchItem = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/items/${id}`);
+        const { data } = await axios.get(`https://server-ten-pi-36.vercel.app/api/items/${id}`);
         if (data.item) {
           setItem(data.item);
           setReviews(data.reviews || []);
@@ -54,7 +54,7 @@ const ItemDetails = () => {
       const userInfo = JSON.parse(userInfoString);
       const totalAmount = calculateTotal();
       
-      await axios.post('http://localhost:5000/api/bookings', {
+      await axios.post('https://server-ten-pi-36.vercel.app/api/bookings', {
         itemId: item._id,
         startDate: dates.start,
         endDate: dates.end,

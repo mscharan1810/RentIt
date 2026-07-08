@@ -23,9 +23,9 @@ const Dashboard = () => {
           const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
           
           const [itemsRes, bookingsRes, ownerBookingsRes] = await Promise.all([
-            axios.get('http://localhost:5000/api/items'),
-            axios.get('http://localhost:5000/api/bookings/mybookings', config).catch(() => ({ data: [] })),
-            axios.get('http://localhost:5000/api/bookings/ownerbookings', config).catch(() => ({ data: [] }))
+            axios.get('https://server-ten-pi-36.vercel.app/api/items'),
+            axios.get('https://server-ten-pi-36.vercel.app/api/bookings/mybookings', config).catch(() => ({ data: [] })),
+            axios.get('https://server-ten-pi-36.vercel.app/api/bookings/ownerbookings', config).catch(() => ({ data: [] }))
           ]);
           
           const myItems = itemsRes.data.filter(item => {
@@ -49,7 +49,7 @@ const Dashboard = () => {
   const handleUpdateStatus = async (bookingId, newStatus) => {
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      await axios.put(`http://localhost:5000/api/bookings/${bookingId}/status`, { status: newStatus }, config);
+      await axios.put(`https://server-ten-pi-36.vercel.app/api/bookings/${bookingId}/status`, { status: newStatus }, config);
       
       setOwnerBookings(prev => 
         prev.map(b => b._id === bookingId ? { ...b, status: newStatus } : b)
@@ -64,7 +64,7 @@ const Dashboard = () => {
   const handlePayment = async (bookingId) => {
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      await axios.put(`http://localhost:5000/api/bookings/${bookingId}/pay`, {}, config);
+      await axios.put(`https://server-ten-pi-36.vercel.app/api/bookings/${bookingId}/pay`, {}, config);
       
       setOwnerBookings(prev => 
         prev.map(b => b._id === bookingId ? { ...b, paymentStatus: 'paid', status: 'completed' } : b)
@@ -80,7 +80,7 @@ const Dashboard = () => {
     if (window.confirm('Are you sure you want to cancel this request?')) {
       try {
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        await axios.put(`http://localhost:5000/api/bookings/${bookingId}/status`, { status: 'cancelled' }, config);
+        await axios.put(`https://server-ten-pi-36.vercel.app/api/bookings/${bookingId}/status`, { status: 'cancelled' }, config);
         
         setUserBookings(prev => 
           prev.map(b => b._id === bookingId ? { ...b, status: 'cancelled' } : b)
@@ -97,7 +97,7 @@ const Dashboard = () => {
     if (window.confirm('Are you sure you want to delete this listing? This action cannot be undone.')) {
       try {
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        await axios.delete(`http://localhost:5000/api/items/${itemId}`, config);
+        await axios.delete(`https://server-ten-pi-36.vercel.app/api/items/${itemId}`, config);
         
         setUserItems(prev => prev.filter(item => item._id !== itemId));
         alert('Item deleted successfully!');
@@ -112,7 +112,7 @@ const Dashboard = () => {
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
       const { bookingId, role, rating, comment } = reviewForm;
-      const { data } = await axios.post(`http://localhost:5000/api/bookings/${bookingId}/review`, { role, rating, comment }, config);
+      const { data } = await axios.post(`https://server-ten-pi-36.vercel.app/api/bookings/${bookingId}/review`, { role, rating, comment }, config);
       
       if (role === 'renter') {
         setUserBookings(prev => prev.map(b => b._id === bookingId ? data : b));

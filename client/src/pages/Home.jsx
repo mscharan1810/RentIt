@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/items');
+        const { data } = await axios.get('https://server-ten-pi-36.vercel.app/api/items');
         setItems(data.slice(0, 8)); // Display only first 8 items on Home
         setLoading(false);
       } catch (error) {

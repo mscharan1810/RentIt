@@ -74,7 +74,7 @@ const AddItem = () => {
       } else {
         const fetchItem = async () => {
           try {
-            const { data } = await axios.get(`http://localhost:5000/api/items/${id}`);
+            const { data } = await axios.get(`https://server-ten-pi-36.vercel.app/api/items/${id}`);
             const item = data.item || data;
             
             let cat = item.category || 'Electronics';
@@ -172,10 +172,10 @@ const AddItem = () => {
       };
 
       if (isEditMode) {
-        await axios.put(`http://localhost:5000/api/items/${id}`, payload, config);
+        await axios.put(`https://server-ten-pi-36.vercel.app/api/items/${id}`, payload, config);
         alert('Item updated successfully!');
       } else {
-        await axios.post('http://localhost:5000/api/items', payload, config);
+        await axios.post('https://server-ten-pi-36.vercel.app/api/items', payload, config);
         alert('Item listed successfully!');
       }
       navigate('/dashboard');
