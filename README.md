@@ -1,6 +1,6 @@
 # RentIt – Rent Anything Locally
 
-![RentIt Banner](./home.png)
+![RentIt Banner](./assets/home.png)
 
 **Live Deployment:** [https://rentit-app-ochre.vercel.app](https://rentit-app-ochre.vercel.app)
 
@@ -35,40 +35,40 @@ RentIt is a modern, full-stack web application designed to empower communities b
 ### 1. Home / Landing Page
 The landing page provides a stunning first impression with a vibrant hero section, quick search bar, and featured rental categories. It immediately communicates the value of the platform.
 
-![Home Page](./home.png)
+![Home Page](./assets/home.png)
 
 ### 2. User Authentication (Login / Register)
 Secure access to the platform. The UI uses glassmorphism to keep the vibrant background visible while providing clear, readable forms for entering credentials.
 
-![Login Page](./login.png)
+![Login Page](./assets/login.png)
 
 ### 3. Search & Discover Items
 Users can browse available items in their locality. The search interface is intuitive, allowing filtering by categories, price, and availability.
 
-![Search Items](./search.png)
+![Search Items](./assets/search.png)
 
 ### 4. Item Details
 When a user clicks on an item, they get a comprehensive view including high-quality images, descriptions, owner details, rental rules, and pricing.
 
-![Item Details](./item_details.png)
+![Item Details](./assets/item_details.png)
 
 ### 5. Booking Process
 The booking interface allows users to select their required dates, instantly calculates the total cost, and processes the rental agreement smoothly.
 
-![Booking Screen](./booking.png)
+![Booking Screen](./assets/booking.png)
 
 ### 6. User Dashboards
 The application features distinct dashboard views depending on the user's role:
 * **Renter Dashboard:** Track active rentals, past history, and upcoming bookings.
 * **Owner Dashboard:** Manage listed items, view earnings, and approve/reject booking requests.
 
-![Renter Dashboard](./renter_dash.png)
-![Owner Dashboard](./owner_dash.png)
+![Renter Dashboard](./assets/renter_dash.png)
+![Owner Dashboard](./assets/owner_dash.png)
 
 ### 7. List a New Item
 A streamlined form for owners to add new items to the platform, complete with image uploads, pricing configuration, and availability settings.
 
-![Add Item](./add_item.png)
+![Add Item](./assets/add_item.png)
 
 ---
 

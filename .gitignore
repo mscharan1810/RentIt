@@ -2,3 +2,8 @@ node_modules
 dist
 .env
 .DS_Store
+*.pptx
+*.pdf
+*.mp4
+RentIt_Presentation.html
+capture_all.js
