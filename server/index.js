@@ -16,16 +16,38 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/rentit';
 
-let isConnected = false;
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
 const connectDB = async () => {
-  if (isConnected) return;
-  try {
-    const db = await mongoose.connect(MONGO_URI);
-    isConnected = db.connections[0].readyState === 1;
-    console.log('Connected to MongoDB');
-  } catch (error) {
-    console.error('MongoDB connection error:', error);
+  if (cached.conn) {
+    return cached.conn;
   }
+
+  if (!cached.promise) {
+    const opts = {
+      bufferCommands: false,
+      serverSelectionTimeoutMS: 5000,
+    };
+
+    console.log('Connecting to MongoDB...');
+    cached.promise = mongoose.connect(MONGO_URI, opts).then((mongoose) => {
+      console.log('Connected to MongoDB');
+      return mongoose;
+    });
+  }
+  
+  try {
+    cached.conn = await cached.promise;
+  } catch (e) {
+    cached.promise = null;
+    console.error('MongoDB connection error:', e);
+  }
+
+  return cached.conn;
 };
 
 app.use(async (req, res, next) => {
