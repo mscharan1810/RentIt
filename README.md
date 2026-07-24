@@ -4,6 +4,16 @@
 
 **Live Deployment:** [https://rentit-app-ochre.vercel.app](https://rentit-app-ochre.vercel.app)
 
+### 🔑 Test Credentials
+To explore the platform without registering, you can use these seeded test accounts:
+
+**Owner Account** (Has listings and incoming requests)
+* **Email:** `owner@example.in`
+* **Password:** `123456789`
+
+**Renter Account** (Has past bookings and can rent items)
+* **Email:** `renter@example.in`
+* **Password:** `123456789`
 RentIt is a modern, full-stack web application designed to empower communities by allowing users to rent out their idle items (like electronics, tools, vehicles, and party supplies) and enabling others to borrow them locally. Built with the **MERN Stack** (MongoDB, Express, React, Node.js), it features a highly dynamic, responsive, and visually stunning user interface with premium glassmorphism aesthetics.
 
 ---
